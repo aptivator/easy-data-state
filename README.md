@@ -245,12 +245,12 @@ import {EasyDataState, easyDataStateValueKey} from '@easy-data-state/core';
 
 let state = new EasyDataState();
 let someFunction = () => {};
-func[easyDataStateValueKey] = true;
+someFunction[easyDataStateValueKey] = true;
 let unsubscribe = state.subscribe('func', (func) => {
   //use func() in some way;
 }, {cloneReadData: false});
 
-state.write('func', func, {cloneWriteData: false});
+state.write('func', someFunction, {cloneWriteData: false});
 unsubscribe();
 ```
 
