@@ -8,11 +8,20 @@ let fileName = 'easy-data-state';
 let packageJson = require('../package.json');
 let {name} = packageJson;
 let input = `src/${fileName}.js`;
-let main = `./${fileName}.js`;
-let module = `./${fileName}.esm.js`;
-let exports = {require: main, import: module};
+let main = `${fileName}.js`;
+let module = `${fileName}.esm.js`;
 let distDir = path.resolve(__dirname, '../dist');
 let distES5Dir = path.resolve(distDir, 'es5');
+let exports = {
+  '.': {
+    require: `./${main}`, 
+    import: `./${module}`
+  },
+  './es5': {
+    require: `./es5/${main}`,
+    import: `./es5/${module}`
+  }
+};
 
 let ES5BabelPlugins = [['esm', false], ['umd', 'umd']].reduce((plugins, [name, modules]) => {
   return Object.assign(plugins, {
@@ -29,7 +38,7 @@ let ES5BabelPlugins = [['esm', false], ['umd', 'umd']].reduce((plugins, [name, m
 }, {});
 
 packageJson = pick(packageJson, packageJsonBaseFields);
-Object.assign(packageJson, {main, module, exports});
+Object.assign(packageJson, {exports});
 
 export default [{
   input,
@@ -57,8 +66,5 @@ export default [{
     file: path.resolve(distES5Dir, main),
     name,
     plugins: [ES5BabelPlugins.umd]
-  }],
-  plugins: [
-    writePackageJsonPlugin(packageJson, path.resolve(distES5Dir, 'package.json'))
-  ]
+  }]
 }];
