@@ -373,7 +373,7 @@ unsubscribe();
 let state = new EasyDataState();
 state.write({auth: {loggedIn: true}, name: {first: 'first', last: 'last'}});
 let unsubscribe = state.subscribe((data, changedDataAddresses) => {
-  console.log(changedDataAddresses); // ['auth', 'loggedIn']
+  console.log(changedDataAddresses); // [['auth', 'loggedIn']]
 }, {triggerImmediately: false});
 
 state.write('auth.loggedIn', false);
