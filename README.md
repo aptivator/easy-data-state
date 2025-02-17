@@ -428,8 +428,8 @@ can be used with other frameworks; contributions of such integrations are welcom
 Perform the following steps to setup the repository locally.
 
 ```
-git clone https://github.com/aptivator/easy-data-state-core.git
-cd easy-data-state-core
+git clone https://github.com/aptivator/easy-data-state.git
+cd easy-data-state
 npm install
 ```
 
