@@ -1,7 +1,7 @@
-import {expect}                               from 'chai';
-import chalk                                  from 'chalk';
-import {performance}                          from 'node:perf_hooks';
-import {EasyDataState}                        from '../../src/easy-data-state';
+import {expect}        from 'chai';
+import chalk           from 'chalk';
+import {performance}   from 'node:perf_hooks';
+import {EasyDataState} from '../../src/easy-data-state';
 
 describe('EasyDataState performance (basic)', () => {
   let state;
