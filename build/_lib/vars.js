@@ -6,5 +6,6 @@ export const packageJsonBaseFields = [
   'license', 
   'repository', 
   'dependencies', 
-  'peerDependencies'
+  'peerDependencies',
+  'publishConfig'
 ];
