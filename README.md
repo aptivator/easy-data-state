@@ -52,13 +52,13 @@ simpler alternative to some of the mainstream solutions.
 To fetch the library, run the following command.
 
 ```
-npm install --save @easy-data-state/core
+npm install --save easy-data-state
 ```
 
 <a name="distributed-versions"></a>
 ### Distributed Versions
 
-`easy-data-state`'s default import (from `@easy-data-state\core`) is either an
+`easy-data-state`'s default import (from `easy-data-state`) is either an
 EcmaScript (ES) or a CommonJS (as an UMD) module that bundles the source code without
 transpilation.  The library makes use of private class methods, latest native methods
 (e.g., `Array`'s `at`, `Object.hasOwn`), and data structures such as `Set` and `Map`.
@@ -69,7 +69,7 @@ Node 20+) that supports the utilized language features.
 
 For those rare circumstances when `easy-data-state` has to be utilized in older backend
 environments or included in a larger bundle without transpilation (for older browsers),
-the EcmaScript 5 distributable is available from `@easy-data-state\core\es5`.
+the EcmaScript 5 distributable is available from `easy-data-state\es5`.
 
 <a name="creating-a-data-state"></a>
 ### Creating a Data State 
@@ -82,7 +82,7 @@ an application.  One object is sufficient for most cases.
 
 *data-state.js*
 ```javascript
-import {EasyDataState} from '@easy-data-state/core';
+import {EasyDataState} from 'easy-data-state';
 
 export const state = new EasyDataState();
 ```
@@ -109,7 +109,7 @@ overridden at a method's invocation.
 The flag instructs a value or collection of values to be returned as an array.
 
 ```javascript
-import {EasyDataState} from '@easy-data-state/core';
+import {EasyDataState} from 'easy-data-state';
 
 let state = new EasyDataState({asArray: true});
 state.write({loggedIn: true, authorized: false});
@@ -240,7 +240,7 @@ as is.  This can be accomplished by turning off write and read cloning and marki
 an object as an `easy-data-state` value.
 
 ```javascript
-import {EasyDataState, easyDataStateValueKey} from '@easy-data-state/core';
+import {EasyDataState, easyDataStateValueKey} from 'easy-data-state';
 
 let state = new EasyDataState();
 let someFunction = () => {};

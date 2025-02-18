@@ -1,5 +1,5 @@
 {
-  "name": "@easy-data-state/core",
+  "name": "easy-data-state",
   "version": "1.0.0",
   "description": "framework-agnostic data state management",
   "main": "./dist/easy-data-state.js",
@@ -11,7 +11,7 @@
     "dev:coverage": "npm run test:coverage && run-when-changed --watch \"src/**/*.js\" --watch \"test/**/*.js\" --exec \"npm run test:coverage\""
   },
   "author": "Dmitriy A. Nesterkin",
-  "license": "proprietary",
+  "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
     "url": "https://github.com/aptivator/easy-data-state.git"
