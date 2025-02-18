@@ -34,7 +34,7 @@
 <a name="introduction"></a>
 ## Introduction
 
-`easy-data-state` is a data state management solution.  The library utilizes a
+`easy-data-state` is a data state manager.  The library utilizes a
 publish/subscribe model to respond to data state alterations by triggering
 respective callback(s) assigned to receive the changing data.  `easy-data-state`
 is framework-agnostic and may be used with React, Angular, and other
@@ -60,13 +60,12 @@ npm install --save @easy-data-state/core
 
 `easy-data-state`'s default import (from `@easy-data-state\core`) is either an
 EcmaScript (ES) or a CommonJS (as an UMD) module that bundles the source code without
-transpilation.  For example, the library makes use of private class methods,
-latest native methods (e.g., `Array`'s `at`, `Object.hasOwn`), and data structures
-such as `Set` and `Map`.   The defaults are provided as such with the expectations
-that the library will be augmented as a dependency to a host project that, in
-turn, will be transpiled for some target environment or used, as is, in a browser
-or server-side environment (e.g., Node 20+) that supports the utilized language
-features.
+transpilation.  The library makes use of private class methods, latest native methods
+(e.g., `Array`'s `at`, `Object.hasOwn`), and data structures such as `Set` and `Map`.
+The defaults are provided as such with the expectations that `easy-data-state` will be
+augmented as a dependency to a host project that, in turn, will be transpiled for some
+target environment or used, as is, in a browser or server-side environment (e.g.,
+Node 20+) that supports the utilized language features.
 
 For those rare circumstances when `easy-data-state` has to be utilized in older backend
 environments or included in a larger bundle without transpilation (for older browsers),
@@ -146,7 +145,7 @@ state.read('auth') === state.read('auth') // true
 
 The configuration is `true` by default and specifies whether a written data is to be
 deeply cloned before being merged with the data state.  The setting may be used in
-conjunction with `cloneReadData` to allow distribution of an original piece of data.
+conjunction with `cloneReadData` to allow distribution of an original datum.
 
 ```javascript
 let map = new Map();
@@ -210,7 +209,7 @@ addressed by its address and will return the revised subset that is then stored 
 A data address can be single- or multi-level.  Multi-level addresses include a dot (e.g., `auth.name`)
 or can be expressed as an array (e.g., `['auth', 'name]`) and `easy-data-state` will store an
 address's value at the appropriate nesting level.  For example, calling `state.write('auth.loggedIn', true)`
-will place `loggedIn` under `auth` object.
+will place `loggedIn` inside the `auth` object.
 
 The method also accepts a configuration object that will override `cloneWriteData` parameter
 set at instantiation.
@@ -229,7 +228,7 @@ state.read(); // {auth: {profile: {loggedIn: true}, permissions: {name: null}}}
 
 ```javascript
 let state = new EasyDataState();
-state.write('visitsCount', (count = 0) => ++count);
+state.write('visitsCount', (count = 0) => count + 1);
 state.read(); // {visitsCount: 1}
 ```
 
@@ -263,7 +262,7 @@ will override `asArray`, `asObject`, and `cloneReadData` parameters set at insta
 When specifying multi-level data to be returned as an object, `easy-data-state` will use
 the last part of the multi-level address as the reference under which the fetched  datum will
 be stored.  If the last part of multiple multi-level addresses is the same, then a unique
-alias should be provided under which the data will be stored.
+alias should be provided under which the datum will be stored.
 
 ```javascript
 let state = new EasyDataState();
@@ -290,7 +289,7 @@ state.read(['profile.name', {'user.name': 'userName'}]) // {name: 'admin', userN
 #### Deleting Data 
 
 `delete()` removes one or more properties from a data state.  If a property marked for
-deletion does not exist, the library will "fail" silently.
+deletion does not exist, the library will do nothing.
 
 ```javascript
 let state = new EasyDataState();
@@ -416,7 +415,7 @@ components.  Usage instructions are provided there.
 #### Other Frameworks
 
 `easy-data-state` was originally developed as a simpler alternative to Redux,
-Recoil, and other data management React-oriented libraries.  `easy-data-state`
+Recoil, and other data management React-oriented libraries.  However, `easy-data-state`
 can be used with other frameworks; contributions of such integrations are welcome.
 
 <a name="development"></a>
@@ -458,9 +457,10 @@ work for other structures such as Arrays, Maps, and Sets.  The latter can be sto
 
 Callbacks invoked by multiple `delete()` or `write()` calls are executed on the same
 thread/tick.  When run in a context of some framework such as React, this may lead to
-concurrent updates to multiple UI components and may result in an error.  Pushing one or
-some of the `delete()` or `write()` operations towards the end of the microtasking queue
-usually solves the problem.  `queueMicrotask()` is an optimal method for such deferrals.
+concurrent updates to multiple UI components and may result in an error/warning.  This is
+**not** a drawback of the library, but a general caveat when working with a framework like React.
+Pushing one or some of the `delete()` or `write()` operations towards the end of the microtasking
+queue usually solves the problem.  `queueMicrotask()` is an optimal method for such deferrals.
 
 Data stored via `write()` are cloned first.  `structuredClone()` is employed to duplicate
 the values.  The function is supported only in modern browsers and latest Node versions.
