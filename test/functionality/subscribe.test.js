@@ -5,7 +5,7 @@ import {trap}          from '../_lib/traps';
 describe('EasyDataState subscribe()', () => {
   let state;
   beforeEach(() => state = new EasyDataState());
-  afterEach(() => trap.u.run().clear());
+  afterEach(() => trap.u.clear());
 
   describe('operations', () => {
     it(`associates a callback with a state's value`, () => {

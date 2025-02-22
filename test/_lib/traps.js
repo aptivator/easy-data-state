@@ -6,10 +6,8 @@ addTrapDefinitions('unsubscribes', {
     unsubscribes.add(unsubscribe);
   },
   methods: {
-    run(unsubscribes) {
-      unsubscribes.forEach((unsubscribe) => unsubscribe());
-    },
     clear(unsubscribes) {
+      unsubscribes.forEach((unsubscribe) => unsubscribe());
       unsubscribes.clear();
     }
   }
