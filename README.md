@@ -3,9 +3,10 @@
 ## Table of Contents
 
 * [Introduction](#introduction)
-* [Usage](#usage)
-  * [Installation](#installation)
+* [Installation](#installation)
+  * [Installing the Library](#installing-the-library)
   * [Distributed Versions](#distributed-versions)
+* [Usage](#usage)
   * [Creating a Data State](#creating-a-data-state)
     * [Instantiating a Data State Object](#instantiating-a-data-state-object)
     * [Instantiating a Configured Data State Object](#instantiating-a-configured-data-state-object)
@@ -43,11 +44,11 @@ The library may also be used just as a store and includes a mechanism to read
 nested data.  `easy-data-state` stands at under 400 lines of code and provides a
 simpler alternative to some of the mainstream solutions.
 
-<a name="usage"></a>
-## Usage 
-
 <a name="installation"></a>
-### Installation 
+## Installation 
+
+<a name="installing-the-library"></a>
+### Installing the Library
 
 To fetch the library, run the following command.
 
@@ -70,6 +71,9 @@ Node 20+) that supports the utilized language features.
 For those rare circumstances when `easy-data-state` has to be utilized in older backend
 environments or included in a larger bundle without transpilation (for older browsers),
 the EcmaScript 5 distributable is available from `easy-data-state\es5`.
+
+<a name="usage"></a>
+## Usage 
 
 <a name="creating-a-data-state"></a>
 ### Creating a Data State 
