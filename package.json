@@ -36,7 +36,8 @@
     "rimraf": "^3.0.2",
     "rollup": "~3.8.0",
     "rollup-plugin-generate-package-json": "~3.2.0",
-    "run-when-changed": "~2.1.0"
+    "run-when-changed": "~2.1.0",
+    "var-trap": "^1.0.0"
   },
   "dependencies": {
     "core-js": "^3.40.0"
